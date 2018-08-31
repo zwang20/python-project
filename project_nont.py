@@ -56,10 +56,10 @@ while True:
     mouse = pygame.mouse.get_pressed()
 
     for event in pygame.event.get():  # Input
-            if event.type == pygame.QUIT: # Quit
-                pygame.display.quit()
-                pygame.quit()
-                quit()
+        if event.type == pygame.QUIT: # Quit
+            pygame.display.quit()
+            pygame.quit()
+            quit()
 
     if keys[pygame.K_q]:  # Quit
         pygame.display.quit()
@@ -94,10 +94,10 @@ while True:
         sge_print(game_display, 'To unpause press x', 1, 30)
         keys = pygame.key.get_pressed()
         for event in pygame.event.get():  # Input
-                if event.type == pygame.QUIT: # Quit
-                    pygame.display.quit()
-                    pygame.quit()
-                    quit()
+            if event.type == pygame.QUIT: # Quit
+                pygame.display.quit()
+                pygame.quit()
+                quit()
         if keys[pygame.K_q]:
             pygame.display.quit()
             pygame.quit()
