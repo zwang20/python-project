@@ -2,14 +2,18 @@ import pygame
 import os
 from sge import *
 
+# init pygame
 pygame.init()
 
+# create clock
 clock = pygame.time.Clock()
 
+# colours
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
 
+# creat windows
 game_display = pygame.display.set_mode([800, 800])
 
 # set caption
@@ -20,10 +24,17 @@ pygame.display.set_icon(
 pygame.image.load(os.path.join('assets', '32x32_project_nont.png'))
 )
 
-pygame.mouse.set_visible(False) # Disable Mouse
+# Disable Mouse
+pygame.mouse.set_visible(False)
+
+# create bullets list
 bullets = [] # x, y, vector x, vextor y
-cooldown = 0 # Init cooldown
-pos = [400, 400] # position
+
+# Init cooldown
+cooldown = 0
+
+# position
+pos = [400, 400]
 
 # Main loop
 while True:
@@ -63,7 +74,7 @@ while True:
 
     # fire input
     if mouse[0] or keys[pygame.K_SPACE]:
-            fire = True
+        fire = True
 
     # mouse
     sge_rect(game_display, mouse_pos[0]-8, mouse_pos[1]-1, 16, 2, red)
@@ -81,8 +92,11 @@ while True:
 
     # Fire
     if fire and cooldown < 100 and cooldown%4 == 0:
+
         bullets.append(
-            [*pos, (mouse_pos[0]-pos[0])/temp, (mouse_pos[1]-pos[1])/temp])
+        [*pos, (mouse_pos[0]-pos[0])/temp, (mouse_pos[1]-pos[1])/temp]
+        )
+
         cooldown +=10
 
     # end temp
@@ -103,7 +117,8 @@ while True:
 
         # move
         bullets_temp.append(
-            [bullet[0]+bullet[2], bullet[1]+bullet[3], bullet[2], bullet[3]])
+        [bullet[0]+bullet[2], bullet[1]+bullet[3], bullet[2], bullet[3]]
+        )
 
         # display bullets
         sge_line(
