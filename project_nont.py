@@ -165,7 +165,7 @@ while True:
     del bullets_temp
 
     # del extra bullets
-    while len(bullets) > 100:
+    if len(bullets) > 100:
         del bullets[0]
 
 
