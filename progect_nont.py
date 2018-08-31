@@ -16,7 +16,9 @@ game_display = pygame.display.set_mode([800, 800])
 pygame.display.set_caption('Progect nont')
 
 # set icon
-pygame.display.set_icon(pygame.image.load(os.path.join('assets', '32x32_project_nont.png')))
+pygame.display.set_icon(
+pygame.image.load(os.path.join('assets', '32x32_project_nont.png'))
+)
 
 pygame.mouse.set_visible(False) # Disable Mouse
 bullets = [] # x, y, vector x, vextor y
@@ -88,7 +90,7 @@ while True:
 
     # Cooldown
     if cooldown > 0:
-            cooldown -= 1
+        cooldown -= 1
 
     # Cooldown bar
     sge_rect(game_display, 700, 790, 100, 10, white)
@@ -104,9 +106,11 @@ while True:
             [bullet[0]+bullet[2], bullet[1]+bullet[3], bullet[2], bullet[3]])
 
         # display bullets
-        sge_line(game_display, black,
-            (bullet[0], bullet[1]),
-            (bullet[0]-bullet[2], bullet[1]-bullet[3]), 2)
+        sge_line(
+        game_display, black, (bullet[0], bullet[1]),
+        (bullet[0]-bullet[2], bullet[1]-bullet[3]), 2
+        )
+
     bullets = bullets_temp
     del bullets_temp
 
