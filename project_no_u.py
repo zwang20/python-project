@@ -1,4 +1,5 @@
 import pygame
+import os
 from sge import *
 
 pygame.init()
@@ -12,7 +13,11 @@ red = (255, 0, 0)
 game_display = pygame.display.set_mode([800, 800])
 
 # TODO: set caption
-# TODO: set icon
+
+# set icon
+pygame.display.set_icon(
+pygame.image.load(os.path.join('assets', '32x32_project_no_u.png'))
+)
 
 # Use Vectors
 # a^2 + b^2 = c^2
@@ -53,7 +58,7 @@ while True:
     # similar triangles amirite
     temp = (((((mouse_pos[0]-400)**2)+((mouse_pos[1]-400)**2))**0.5)/10)
     # print(temp)
-    
+
     if temp == 0:
         temp = 0.1
     if fire and cooldown < 100 and cooldown%4 == 0:
@@ -68,7 +73,7 @@ while True:
 
     sge_rect(game_display, 700, 790, 100, 10, white)
     sge_rect(game_display, 700, 790, cooldown, 10, red)
-    
+
     bullets_temp = []
     for bullet in bullets:
         bullets_temp.append([bullet[0]+bullet[2], bullet[1]+bullet[3], bullet[2], bullet[3]])
@@ -80,8 +85,7 @@ while True:
     # print(len(bullets))
     while len(bullets) > 100:
         del bullets[0]
-        
-    
+
+
     pygame.display.update() # update
     # This should be the last thing in the loop
-

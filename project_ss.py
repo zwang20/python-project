@@ -1,4 +1,5 @@
 import pygame
+import os
 from random import randint
 
 pygame.init()
@@ -15,7 +16,10 @@ ss_display = pygame.display.set_mode([800, 800])
 
 pygame.display.set_caption('Simple Shooter')
 
-# TODO: Add Icon
+# Add Icon
+pygame.display.set_icon(
+pygame.image.load(os.path.join('assets', '32x32_project_ss.png'))
+)
 
 def ss_bad_ai(px, py, bx, by, mode='a', difficulty='normal'):
     ss_bad_ai_temp = randint(0,3)
@@ -168,9 +172,9 @@ def ss():
                         ss_cooldown += 20
             if ss_cooldown > 0:
                 ss_cooldown -= 1
-            
+
                 #TODO
-            
+
             # Bullets Move
             ss_bullets_temp = []
             ss_temp = True
@@ -185,10 +189,10 @@ def ss():
                 ss_temp = True
                 # Bullets Despawn
             del ss_temp
-            
+
             ss_bullets = ss_bullets_temp
             del ss_bullets_temp
-            
+
             # Bullet cooldowm
             ss_rect(700, 790, 100, 10, white)
             ss_rect(700, 790, ss_cooldown, 10, red)
