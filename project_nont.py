@@ -43,34 +43,69 @@ while True:
     clock.tick(30) # Frames per second
     sge_clear(game_display) # Clear
     sge_print(game_display, str(int(10*clock.get_fps())/10)) # Fps display
+
+    # fire
     fire = False
+
+    # pause
+    pause = False
 
     # Input
     mouse_pos = pygame.mouse.get_pos()
     keys = pygame.key.get_pressed()
     mouse = pygame.mouse.get_pressed()
+
     for event in pygame.event.get():  # Input
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q: # Quit
-                    pygame.display.quit()
-                    pygame.quit()
-                    quit()
             if event.type == pygame.QUIT: # Quit
                 pygame.display.quit()
                 pygame.quit()
                 quit()
+
+    if keys[pygame.K_q]:  # Quit
+        pygame.display.quit()
+        pygame.quit()
+        quit()
+
     if keys[pygame.K_w]:  # Up
         if pos[1] > 0:
             pos[1] -= 3
+
     if keys[pygame.K_d]:  # Right
         if pos[0] < 790:
             pos[0] += 3
+
     if keys[pygame.K_a]:  # Left
         if pos[0] > 0:
             pos[0] -= 3
+
     if keys[pygame.K_s]:  # Down
         if pos[1] < 790:
             pos[1] += 3
+
+    # Pause
+    if keys[pygame.K_p]:
+        pause = True
+
+    # Pause
+    while pause:
+        clock.tick(30)
+        sge_clear(game_display)
+        sge_print(game_display, 'Paused')
+        sge_print(game_display, 'To unpause press x', 1, 30)
+        keys = pygame.key.get_pressed()
+        for event in pygame.event.get():  # Input
+                if event.type == pygame.QUIT: # Quit
+                    pygame.display.quit()
+                    pygame.quit()
+                    quit()
+        if keys[pygame.K_q]:
+            pygame.display.quit()
+            pygame.quit()
+            quit()
+        if keys[pygame.K_x]:
+            pause = False
+        pygame.display.update() # update
+        # This should be the last thing in the loop
 
     # fire input
     if mouse[0] or keys[pygame.K_SPACE]:
