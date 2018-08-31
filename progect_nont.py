@@ -1,4 +1,5 @@
 import pygame
+import os
 from sge import *
 
 pygame.init()
@@ -12,7 +13,9 @@ red = (255, 0, 0)
 game_display = pygame.display.set_mode([800, 800])
 
 # TODO: set caption
-# TODO: set icon
+
+# set icon
+pygame.display.set_icon(pygame.image.load(os.path.join('assets', '32x32_project_nont.png')))
 
 pygame.mouse.set_visible(False) # Disable Mouse
 bullets = [] # x, y, vector x, vextor y
