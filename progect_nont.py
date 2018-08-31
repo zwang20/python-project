@@ -12,7 +12,8 @@ red = (255, 0, 0)
 
 game_display = pygame.display.set_mode([800, 800])
 
-# TODO: set caption
+# set caption
+pygame.display.set_caption('Progect nont')
 
 # set icon
 pygame.display.set_icon(pygame.image.load(os.path.join('assets', '32x32_project_nont.png')))
