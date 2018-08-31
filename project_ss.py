@@ -250,4 +250,4 @@ try:
 except KeyboardInterrupt:
     pygame.display.quit()
     pygame.quit()
-    #quit()
+    quit()
