@@ -21,7 +21,7 @@ pygame.display.set_icon(pygame.image.load(os.path.join('assets', '32x32_project_
 pygame.mouse.set_visible(False) # Disable Mouse
 bullets = [] # x, y, vector x, vextor y
 cooldown = 0 # Init cooldown
-pos = [400, 400] # TODO position
+pos = [400, 400] # position
 
 # Main loop
 while True:
