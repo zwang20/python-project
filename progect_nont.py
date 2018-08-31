@@ -24,7 +24,7 @@ while True:
     # init
     clock.tick(30) # Frames per second
     sge_clear(game_display) # Clear
-    sge_print(game_display, str(int(10*clock.get_fps())/10))
+    sge_print(game_display, str(int(10*clock.get_fps())/10)) # Fps display
     fire = False
 
     # Input
@@ -33,14 +33,16 @@ while True:
                 if event.key == pygame.K_q: # Quit
                     pygame.display.quit()
                     pygame.quit()
-                    # quit()
+                    quit()
             if event.type == pygame.QUIT: # Quit
                 pygame.display.quit()
                 pygame.quit()
-                # quit()
+                quit()
     mouse_pos = pygame.mouse.get_pos()
     keys = pygame.key.get_pressed()
     mouse = pygame.mouse.get_pressed()
+
+    # fire input
     if mouse[0]:
             fire = True
 
@@ -48,6 +50,7 @@ while True:
     sge_rect(game_display, mouse_pos[0]-8, mouse_pos[1]-1, 16, 2, red)
     sge_rect(game_display, mouse_pos[0]-1, mouse_pos[1]-8, 2, 16, red)
 
+    # start temp
     # temp ratios
     temp = (((((mouse_pos[0]-400)**2)+((mouse_pos[1]-400)**2))**0.5)/10)
 
@@ -60,6 +63,8 @@ while True:
         bullets.append(
             [400, 400, (mouse_pos[0]-400)/temp, (mouse_pos[1]-400)/temp])
         cooldown +=10
+
+    # end temp
     del temp
 
     # Cooldown
@@ -70,13 +75,19 @@ while True:
     sge_rect(game_display, 700, 790, 100, 10, white)
     sge_rect(game_display, 700, 790, cooldown, 10, red)
 
+    # Bullets movement
+    # start bullets_temp
     bullets_temp = []
     for bullet in bullets:
+
+        # move
         bullets_temp.append(
             [bullet[0]+bullet[2], bullet[1]+bullet[3], bullet[2], bullet[3]])
+
+        # display bullets
         sge_line(game_display, black,
-            (bullet[0], bullet[1]), (bullet[0]-bullet[2], bullet[1]-bullet[3]),
-                 2)
+            (bullet[0], bullet[1]),
+            (bullet[0]-bullet[2], bullet[1]-bullet[3]), 2)
     bullets = bullets_temp
     del bullets_temp
     while len(bullets) > 100:
